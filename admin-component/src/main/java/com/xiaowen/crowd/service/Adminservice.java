@@ -50,4 +50,11 @@ public interface Adminservice {
    * @param admin
    */
   void update(Admin admin);
+
+  /**
+   * 账号查询Admin
+   * @param loginAcct
+   * @return
+   */
+  Admin getAdminByLoginAcct(String loginAcct);
 }

@@ -13,6 +13,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
@@ -164,11 +165,31 @@ public class AdminHandler {
     return "admin-edit";
   }
 
+  /**
+   * 执行更新
+   * @param pageNum
+   * @param keyword
+   * @param admin
+   * @return
+   */
   @RequestMapping("admin/update.html")
   public String update(@RequestParam("pageNum") String pageNum,
                        @RequestParam("keyword") String keyword,
                        Admin admin) {
 
     adminservice.update(admin);
-    return "redirect:/admin/get/page.html?pageNum=" + pageNum + "&keyword=" + keyword;  }
+    return "redirect:/admin/get/page.html?pageNum=" + pageNum + "&keyword=" + keyword;
+  }
+
+  @RequestMapping("admin/check/existUserInDb.html")
+  @ResponseBody
+  public String checkUserInDb(@RequestParam("loginAcct") String loginAcct) {
+
+    Admin admin = adminservice.getAdminByLoginAcct(loginAcct);
+
+    if (admin != null) {
+      return "true";
+    }
+    return "false";
+  }
 }

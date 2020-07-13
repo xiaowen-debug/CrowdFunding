@@ -36,7 +36,7 @@
 
                         <div class="form-group">
                             <label for="exampleInputPassword1">登录账号</label>
-                            <input type="text" name="loginAcct" value="${requestScope.admin.loginAcct}" class="form-control" id="exampleInputPassword1" placeholder="请输入登录账号">
+                            <input type="text" name="loginAcct" id="loginAcct" value="${requestScope.admin.loginAcct}" class="form-control" placeholder="请输入登录账号">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">用户昵称</label>
@@ -47,7 +47,7 @@
                             <input type="email" name="email" value="${requestScope.admin.email}" class="form-control" id="exampleInputEmail1" placeholder="请输入邮箱地址">
                             <p class="help-block label label-warning">请输入合法的邮箱地址, 格式为： xxxx@xxxx.com</p>
                         </div>
-                        <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-edit"></i> 更新</button>
+                        <button type="button" id="btn" class="btn btn-success"><i class="glyphicon glyphicon-edit"></i> 更新</button>
                         <button type="reset" class="btn btn-danger"><i class="glyphicon glyphicon-refresh"></i> 重置</button>
                     </form>
                 </div>
@@ -56,4 +56,31 @@
     </div>
 </div>
 </body>
+<script type="text/javascript">
+
+    $("#btn").click(function () {
+
+        var existUser = false;
+        $.ajax({
+            url: "admin/check/existUserInDb.html",
+            async: false,
+            type: "get",
+            data: {
+                loginAcct: $("#loginAcct").val()
+            },
+            dataType: "text",
+            success: function (res) {
+                if (res === 'true') {
+                    existUser = true;
+                }
+            }
+        });
+        if (existUser) {
+            layer.msg("抱歉！这个登录账号已经被使用了！");
+            return ;
+        }
+        $("form").submit();
+    });
+
+</script>
 </html>

@@ -5,7 +5,6 @@ import com.github.pagehelper.PageInfo;
 import com.xiaowen.crowd.constant.CrowdConstant;
 import com.xiaowen.crowd.entity.Admin;
 import com.xiaowen.crowd.entity.AdminExample;
-import com.xiaowen.crowd.exception.LoginAcctAlreadyInUseException;
 import com.xiaowen.crowd.exception.LoginAcctAlreadyInUseForUpdateException;
 import com.xiaowen.crowd.exception.LoginFailedException;
 import com.xiaowen.crowd.mapper.AdminMapper;
@@ -114,10 +113,23 @@ public class AdminserviceImpl implements Adminservice {
         adminMapper.updateByPrimaryKeySelective(admin);
       } catch (Exception e) {
         e.printStackTrace();
+        /*
         if (e instanceof DuplicateKeyException) {
           throw new LoginAcctAlreadyInUseForUpdateException(CrowdConstant.MESSAGE_LOGIN_ACCT_ALREADY_IN_USE);
         }
+        */
       }
     }
+  }
+
+  @Override
+  public Admin getAdminByLoginAcct(String loginAcct) {
+    if (loginAcct == null) {
+      return null;
+    }
+    AdminExample adminExample = new AdminExample();
+    AdminExample.Criteria criteria = adminExample.createCriteria();
+    criteria.andLoginAcctEqualTo(loginAcct);
+    return adminMapper.selectByExample(adminExample).get(0);
   }
 }
