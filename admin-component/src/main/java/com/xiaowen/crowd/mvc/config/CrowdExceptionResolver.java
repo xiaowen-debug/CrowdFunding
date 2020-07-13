@@ -3,6 +3,7 @@ package com.xiaowen.crowd.mvc.config;
 import com.google.gson.Gson;
 import com.xiaowen.crowd.exception.AccessForbiddenException;
 import com.xiaowen.crowd.exception.LoginAcctAlreadyInUseException;
+import com.xiaowen.crowd.exception.LoginAcctAlreadyInUseForUpdateException;
 import com.xiaowen.crowd.exception.LoginFailedException;
 import com.xiaowen.crowd.util.CrowdUtil;
 import com.xiaowen.crowd.util.ResultEntity;
@@ -57,6 +58,15 @@ public class CrowdExceptionResolver {
     String viewName = "admin-add";
     return this.commonResolveException(viewName, exception, request, response);
   }
+
+  @ExceptionHandler(value = LoginAcctAlreadyInUseForUpdateException.class)
+  public ModelAndView resolveLoginAcctAlreadyInUseForUpdateException(LoginAcctAlreadyInUseForUpdateException exception,
+                                                 HttpServletRequest request, HttpServletResponse response) throws IOException {
+    // 只是指定当前异常对应的页面即可
+    String viewName = "system-error";
+    return this.commonResolveException(viewName, exception, request, response);
+  }
+
 
   /**
    * 登录失败异常

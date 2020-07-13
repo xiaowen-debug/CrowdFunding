@@ -32,4 +32,6 @@ public interface AdminMapper {
     List<Admin> selectAll();
 
     List<Admin> selectAdminByKeyword(@Param("keyword") String keyword);
+
+    Admin selectAdminById(Integer id);
 }

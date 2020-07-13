@@ -143,4 +143,32 @@ public class AdminHandler {
 
     return "redirect:/admin/get/page.html?pageNum=" + Integer.MAX_VALUE;
   }
+
+  /**
+   * 编辑页面数据
+   * @param adminId
+   * @param pageNum
+   * @param keyword
+   * @return
+   */
+  @RequestMapping("admin/to/edit/{adminId}/{pageNum}/{keyword}.html")
+  public String getAdminById(@PathVariable("adminId") Integer adminId,
+                             @PathVariable("pageNum") Integer pageNum,
+                             @PathVariable("keyword") String keyword,
+                             ModelMap modelMap) {
+
+    Admin admin = adminservice.getAdminById(adminId);
+    modelMap.addAttribute("admin", admin);
+    modelMap.addAttribute("pageNum", pageNum);
+    modelMap.addAttribute("keyword", keyword);
+    return "admin-edit";
+  }
+
+  @RequestMapping("admin/update.html")
+  public String update(@RequestParam("pageNum") String pageNum,
+                       @RequestParam("keyword") String keyword,
+                       Admin admin) {
+
+    adminservice.update(admin);
+    return "redirect:/admin/get/page.html?pageNum=" + pageNum + "&keyword=" + keyword;  }
 }

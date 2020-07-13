@@ -5,11 +5,14 @@ import com.github.pagehelper.PageInfo;
 import com.xiaowen.crowd.constant.CrowdConstant;
 import com.xiaowen.crowd.entity.Admin;
 import com.xiaowen.crowd.entity.AdminExample;
+import com.xiaowen.crowd.exception.LoginAcctAlreadyInUseException;
+import com.xiaowen.crowd.exception.LoginAcctAlreadyInUseForUpdateException;
 import com.xiaowen.crowd.exception.LoginFailedException;
 import com.xiaowen.crowd.mapper.AdminMapper;
 import com.xiaowen.crowd.service.Adminservice;
 import com.xiaowen.crowd.util.CrowdUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -93,5 +96,28 @@ public class AdminserviceImpl implements Adminservice {
   public void removeAdminById(Integer adminId) {
 
     this.adminMapper.deleteByPrimaryKey(adminId);
+  }
+
+  @Override
+  public Admin getAdminById(Integer adminId) {
+    if (adminId == null) {
+      return null;
+    }
+    return adminMapper.selectAdminById(adminId);
+  }
+
+  @Override
+  public void update(Admin admin) {
+    if (admin != null) {
+      try {
+        //Selective选择性更新，对于NULL值的字段不进行更新
+        adminMapper.updateByPrimaryKeySelective(admin);
+      } catch (Exception e) {
+        e.printStackTrace();
+        if (e instanceof DuplicateKeyException) {
+          throw new LoginAcctAlreadyInUseForUpdateException(CrowdConstant.MESSAGE_LOGIN_ACCT_ALREADY_IN_USE);
+        }
+      }
+    }
   }
 }
