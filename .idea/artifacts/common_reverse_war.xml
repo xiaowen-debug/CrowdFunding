@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="common-reverse:war">
+    <output-path>$PROJECT_DIR$/common-reverse/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>common-reverse</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="common-reverse.war">
+      <element id="artifact" artifact-name="common-reverse:war exploded" />
+    </root>
+  </artifact>
+</component>
