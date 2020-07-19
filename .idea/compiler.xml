@@ -7,20 +7,20 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="common-util" />
+        <module name="common-reverse" />
         <module name="admin-webui" />
         <module name="admin-component" />
+        <module name="common-util" />
         <module name="admin-entity" />
-        <module name="common-reverse" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
       <module name="admin-component" target="8" />
-      <module name="admin-entity" target="1.5" />
-      <module name="admin-parent" target="1.5" />
-      <module name="admin-webui" target="1.5" />
-      <module name="common-reverse" target="1.7" />
-      <module name="common-util" target="1.5" />
+      <module name="admin-entity" target="8" />
+      <module name="admin-parent" target="8" />
+      <module name="admin-webui" target="8" />
+      <module name="common-reverse" target="8" />
+      <module name="common-util" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

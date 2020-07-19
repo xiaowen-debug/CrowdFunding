@@ -1,6 +1,6 @@
 package com.xiaowen.crowd.mvc.handler;
 
-import com.xiaowen.crowd.service.RoleService;
+import com.xiaowen.crowd.service.role.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 

@@ -1,8 +1,8 @@
 package com.xiaowen.crowd;
 
-import com.xiaowen.crowd.entity.Admin;
+import com.xiaowen.crowd.entity.admin.Admin;
 import com.xiaowen.crowd.mapper.AdminMapper;
-import com.xiaowen.crowd.service.Adminservice;
+import com.xiaowen.crowd.service.admin.Adminservice;
 import com.xiaowen.crowd.util.CrowdUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;

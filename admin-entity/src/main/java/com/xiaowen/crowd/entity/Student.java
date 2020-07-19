@@ -1,5 +1,7 @@
 package com.xiaowen.crowd.entity;
 
+import com.xiaowen.crowd.entity.address.Address;
+
 import java.util.List;
 import java.util.Map;
 

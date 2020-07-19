@@ -1,7 +1,7 @@
 package com.xiaowen.crowd.mvc.interceptor;
 
 import com.xiaowen.crowd.constant.CrowdConstant;
-import com.xiaowen.crowd.entity.Admin;
+import com.xiaowen.crowd.entity.admin.Admin;
 import com.xiaowen.crowd.exception.AccessForbiddenException;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 

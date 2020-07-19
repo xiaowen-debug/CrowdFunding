@@ -1,7 +1,7 @@
 package com.xiaowen.crowd.mapper;
 
-import com.xiaowen.crowd.entity.Role;
-import com.xiaowen.crowd.entity.RoleExample;
+import com.xiaowen.crowd.entity.role.Role;
+import com.xiaowen.crowd.entity.role.RoleExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

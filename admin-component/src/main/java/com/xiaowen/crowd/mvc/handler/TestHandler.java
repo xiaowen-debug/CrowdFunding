@@ -1,10 +1,10 @@
 package com.xiaowen.crowd.mvc.handler;
 
 import com.xiaowen.crowd.constant.CrowdConstant;
-import com.xiaowen.crowd.entity.Admin;
+import com.xiaowen.crowd.entity.admin.Admin;
 import com.xiaowen.crowd.entity.ParamData;
 import com.xiaowen.crowd.entity.Student;
-import com.xiaowen.crowd.service.Adminservice;
+import com.xiaowen.crowd.service.admin.Adminservice;
 import com.xiaowen.crowd.util.CrowdUtil;
 import com.xiaowen.crowd.util.ResultEntity;
 import org.slf4j.Logger;

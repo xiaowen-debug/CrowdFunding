@@ -2,8 +2,8 @@ package com.xiaowen.crowd.mapper;
 
 import java.util.List;
 
-import com.xiaowen.crowd.entity.Admin;
-import com.xiaowen.crowd.entity.AdminExample;
+import com.xiaowen.crowd.entity.admin.Admin;
+import com.xiaowen.crowd.entity.admin.AdminExample;
 import org.apache.ibatis.annotations.Param;
 
 public interface AdminMapper {

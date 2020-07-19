@@ -46,6 +46,15 @@ public class ResultEntity<T> {
     return new ResultEntity<Type>(FAILED, message, null);
   }
 
+  /**
+   * 请求处理成功后使用的工具方法
+   * @param message 成功消息
+   * @return
+   */
+  public static <Type> ResultEntity<Type> success(String message) {
+    return new ResultEntity<Type>(SUCCESS, message, null);
+  }
+
   public ResultEntity() {
 
   }

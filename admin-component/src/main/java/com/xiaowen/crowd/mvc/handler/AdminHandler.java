@@ -2,9 +2,9 @@ package com.xiaowen.crowd.mvc.handler;
 
 import com.github.pagehelper.PageInfo;
 import com.xiaowen.crowd.constant.CrowdConstant;
-import com.xiaowen.crowd.entity.Admin;
+import com.xiaowen.crowd.entity.admin.Admin;
 import com.xiaowen.crowd.exception.LoginAcctAlreadyInUseException;
-import com.xiaowen.crowd.service.Adminservice;
+import com.xiaowen.crowd.service.admin.Adminservice;
 import com.xiaowen.crowd.util.CrowdUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
