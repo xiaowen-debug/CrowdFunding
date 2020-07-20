@@ -115,6 +115,11 @@
     delete from t_admin
     where id = #{id,jdbcType=INTEGER}
   </delete>
+  <delete id="deleteOldRelationship"  >
+    delete from inner_admin_role
+    where admin_id = #{adminId}
+  </delete>
+
   <delete id="deleteByExample" parameterType="com.xiaowen.crowd.entity.admin.AdminExample" >
     delete from t_admin
     <if test="_parameter != null" >
@@ -122,12 +127,19 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.xiaowen.crowd.entity.admin.Admin" >
-    insert into t_admin (id, login_acct, user_pswd, 
+    insert into t_admin (id, login_acct, user_pswd,
       user_name, email, create_time
       )
-    values (#{id,jdbcType=INTEGER}, #{loginAcct,jdbcType=VARCHAR}, #{userPswd,jdbcType=CHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{loginAcct,jdbcType=VARCHAR}, #{userPswd,jdbcType=CHAR},
       #{userName,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{createTime,jdbcType=CHAR}
       )
+  </insert>
+  <insert id="insertNewRelationship" >
+    insert into inner_admin_role (admin_id, role_id)
+    values
+    <foreach collection="roleIdList" item="roleId" separator=",">
+      (#{adminId}, #{roleId})
+    </foreach>
   </insert>
   <insert id="insertSelective" parameterType="com.xiaowen.crowd.entity.admin.Admin" >
     insert into t_admin

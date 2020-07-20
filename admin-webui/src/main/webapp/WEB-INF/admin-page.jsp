@@ -72,9 +72,10 @@
                                             <td>${admin.userName }</td>
                                             <td>${admin.email }</td>
                                             <td>
-                                                <button type="button" class="btn btn-success btn-xs">
+                                                <a href="assign/to/assign/role/page/${admin.id}/${requestScope.pageInfo.pageNum}/${param.keyword}.html"
+                                                   class="btn btn-success btn-xs">
                                                     <i class=" glyphicon glyphicon-check"></i>
-                                                </button>
+                                                </a>
                                                 <a href="/admin/to/edit/${admin.id}/${requestScope.pageInfo.pageNum}/${param.keyword}.html" class="btn btn-primary btn-xs">
                                                     <i class=" glyphicon glyphicon-pencil"></i>
                                                 </a>
