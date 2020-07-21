@@ -143,3 +143,40 @@ function showConfirmModal(roles) {
         window.roleIdArry.push(roleId);
     }
 }
+
+/**
+ * 权限树状结构
+ */
+function fillAuthTree() {
+
+    //1、发送ajax请求查询Auth数据
+    var ajaxReturn = $.ajax({
+        url: "assgin/get/all/auth.json",
+        type: "post",
+        dataType: "json",
+        async: false
+    });
+
+    if (ajaxReturn.status != 200) {
+        layer.msg("请求处理出错,响应状态码是：" + ajaxReturn.status + "说明是："  + ajaxReturn.statusText);
+        return ;
+    }
+    var authList = ajaxReturn.responseJSON.data;
+
+    $("#assignModal").modal("show");
+
+    var setting = {
+        data: {
+            simpleData: {
+                //开启简单JSON功能
+                enable: true
+            }
+        }
+    };
+
+    $.fn.zTree.init($("#authTreeDemo"), setting, authList);
+
+    //查询已分配的Auth的id组成的数据
+
+    //根据authIdArray把树形结构中对应的节点勾选上
+}

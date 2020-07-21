@@ -73,6 +73,8 @@
 <%@include file="/WEB-INF/modal-role-assign-auth.jsp" %>
 </body>
 <script type="text/javascript" src="crowd/my-role.js"></script>
+<link rel="stylesheet" href="ztree/zTreeStyle.css">
+<script type="text/javascript" src="ztree/jquery.ztree.all-3.5.min.js"></script>
 <link rel="stylesheet" href="css/pagination.css" />
 <script type="text/javascript" src="jquery/jquery.pagination.js"></script>
 <script type="text/javascript">
@@ -270,6 +272,12 @@
             showConfirmModal(roles);
 
         })
+
+        //给分配权限按钮分配单击响应事件
+        $("#rolePageBody").on("click",".checkBtn",function () {
+
+            fillAuthTree();
+        });
 
     });
 </script>

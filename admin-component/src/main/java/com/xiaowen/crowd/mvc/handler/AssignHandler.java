@@ -2,6 +2,7 @@ package com.xiaowen.crowd.mvc.handler;
 
 import com.xiaowen.crowd.entity.role.Role;
 import com.xiaowen.crowd.service.admin.Adminservice;
+import com.xiaowen.crowd.service.auth.AuthService;
 import com.xiaowen.crowd.service.role.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -25,8 +27,11 @@ public class AssignHandler {
   @Autowired
   protected RoleService roleService;
 
+  @Autowired
+  protected AuthService authService;
+
   /**
-   * 初始数据
+   * 角色分配初始数据
    * @param adminId
    * @param pageNum
    * @param keyword
@@ -74,4 +79,14 @@ public class AssignHandler {
 
     return "redirect:/admin/get/page.html?pageNum=" + pageNum + "&keyword=" + keyword;
   }
+
+
+  @ResponseBody
+  @RequestMapping("assgin/get/all/auth.json")
+  public String getAllAuth() {
+
+    return "assign-role";
+  }
+
+
 }
