@@ -82,6 +82,13 @@
       order by ${orderByClause}
     </if>
   </select>
+
+  <select id="selectAssignedAuthIdByRoleId" resultMap="BaseResultMap">
+    SELECT t.* FROM inner_role_auth r
+    LEFT JOIN t_auth t ON r.`auth_id` = t.`id`
+    where role_id = #{roleId}
+  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -98,12 +105,24 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
+  <delete id="deleteOldRelationship" >
+    delete from inner_role_auth where role_id = #{roleId}
+  </delete>
   <insert id="insert" parameterType="com.xiaowen.crowd.entity.auth.Auth" >
     insert into t_auth (id, name, title, 
       category_id)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
       #{categoryId,jdbcType=INTEGER})
   </insert>
+
+  <insert id="insertNewRelationship" >
+    insert into inner_role_auth (auth_id, role_id)
+    values
+    <foreach collection="authIdList" item="authId" separator=",">
+      (#{authId}, #{roleId})
+    </foreach>
+  </insert>
+
   <insert id="insertSelective" parameterType="com.xiaowen.crowd.entity.auth.Auth" >
     insert into t_auth
     <trim prefix="(" suffix=")" suffixOverrides="," >

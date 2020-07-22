@@ -5,6 +5,7 @@
     <file type="web" url="file://$PROJECT_DIR$/admin-entity" />
     <file type="web" url="file://$PROJECT_DIR$/admin-webui" />
     <file type="web" url="file://$PROJECT_DIR$/common-reverse" />
+    <file type="web" url="file://$PROJECT_DIR$/spring-security" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -15,6 +16,7 @@
         <option value="$PROJECT_DIR$/admin-webui/pom.xml" />
         <option value="$PROJECT_DIR$/admin-component/pom.xml" />
         <option value="$PROJECT_DIR$/admin-entity/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-annotation/pom.xml" />
       </list>
     </option>
   </component>

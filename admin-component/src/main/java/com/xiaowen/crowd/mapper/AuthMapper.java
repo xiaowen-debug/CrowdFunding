@@ -27,4 +27,24 @@ public interface AuthMapper {
     int updateByPrimaryKeySelective(Auth record);
 
     int updateByPrimaryKey(Auth record);
+
+    /**
+     * 根据角色ID查询已分配的权限
+     * @param roleId
+     * @return
+     */
+    List<Auth> selectAssignedAuthIdByRoleId(@Param("roleId") Integer roleId);
+
+    /**
+     * 删除旧的关联关系
+     * @param roleId
+     */
+    void deleteOldRelationship(@Param("roleId") Integer roleId);
+
+    /**
+     * 保存新的关联关系
+     * @param roleId
+     * @param authIdList
+     */
+    void insertNewRelationship(@Param("roleId") Integer roleId, @Param("authIdList") List<Integer> authIdList);
 }

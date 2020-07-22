@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/admin-webui/admin-webui.iml" filepath="$PROJECT_DIR$/admin-webui/admin-webui.iml" />
       <module fileurl="file://$PROJECT_DIR$/common-reverse/common-reverse.iml" filepath="$PROJECT_DIR$/common-reverse/common-reverse.iml" />
       <module fileurl="file://$PROJECT_DIR$/common-util/common-util.iml" filepath="$PROJECT_DIR$/common-util/common-util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-annotation/spring-annotation.iml" filepath="$PROJECT_DIR$/spring-annotation/spring-annotation.iml" />
     </modules>
   </component>
 </project>

@@ -10,6 +10,9 @@
     <packaging>pom</packaging>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <!-- 声明属性，对 Spring 的版本进行统一管理 -->
         <xiaowen.spring.version>4.3.20.RELEASE</xiaowen.spring.version>
         <!-- 声明属性，对 SpringSecurity 的版本进行统一管理 -->
@@ -37,16 +40,19 @@
                 <artifactId>spring-test</artifactId>
                 <version>${xiaowen.spring.version}</version>
             </dependency>
+            <!-- SpringSecurity对Web应用进行权限管理 -->
             <dependency>
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-web</artifactId>
                 <version>${xiaowen.spring.security.version}</version>
             </dependency>
+            <!-- SpringSecurity配置 -->
             <dependency>
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-config</artifactId>
                 <version>${xiaowen.spring.security.version}</version>
             </dependency>
+            <!-- SpringSecurity标签库 -->
             <dependency>
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-taglibs</artifactId>

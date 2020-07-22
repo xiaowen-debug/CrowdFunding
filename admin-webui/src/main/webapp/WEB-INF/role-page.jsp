@@ -276,7 +276,51 @@
         //给分配权限按钮分配单击响应事件
         $("#rolePageBody").on("click",".checkBtn",function () {
 
+            //把当前角色ID存入全局变量
+            window.roleId = this.id;
+
             fillAuthTree();
+        });
+
+        // 给分配确定权限按钮绑定单机响应函数
+        $("#assignBtn").click(function () {
+
+            // 准备给服务器发送更改权限id的集合
+            var authIds = [];
+
+            // 获取zTreeObj
+            var zTreeObj = $.fn.zTree.getZTreeObj("authTreeDemo");
+            var checkedNodes = zTreeObj.getCheckedNodes();
+
+            for (var i = 0;i < checkedNodes.length;i++){
+                // 将每个节点的id放入集合
+                authIds.push(checkedNodes[i].id);
+            }
+            var requestBody = {
+                "authIds": authIds,
+                // 为了服务器handlehandler方法能够统一使用List<Integer>方式接收数据，roleId也存入数组
+                "roleId": [window.roleId]
+            }
+            requestBody = JSON.stringify(requestBody);
+            $.ajax({
+                "url": "assign/do/role/assign/auth.json",
+                "type": "post",
+                "data": requestBody,
+                "contentType": "application/json;charset=UTF-8",
+                "success": function (response) {
+                    var result = response.result;
+                    if(result == "SUCCESS"){
+                        layer.msg(response.message)
+                    }else{
+                        layer.msg("请检查您角色的权限！")
+                    }
+                },
+                "error": function (response) {
+                    layer.msg(response.status + " " + response.statusText)
+                }
+            });
+            // 最后关闭模态框
+            $("#assignModal").modal("hide");
         });
 
     });

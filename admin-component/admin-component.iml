@@ -103,5 +103,11 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet.jsp:jsp-api:2.1.3-b06" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.glassfish:javax.servlet:3.0-b70" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.el:el-api:2.1.2-b05" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-web:4.2.10.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-core:4.2.10.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-config:4.2.10.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-taglibs:4.2.10.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-acl:4.2.10.RELEASE" level="project" />
   </component>
 </module>

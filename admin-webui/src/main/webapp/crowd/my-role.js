@@ -169,14 +169,53 @@ function fillAuthTree() {
         data: {
             simpleData: {
                 //开启简单JSON功能
-                enable: true
+                enable: true,
+                //使用categoryId属性关联父节点，默认是pid属性
+                pIdKey: "categoryId"
+            },
+            key: {
+                //zTree默认显示name属性值，自定义显示属性名
+                name: "title"
             }
+        },
+        check: {
+            enable: true
         }
     };
 
     $.fn.zTree.init($("#authTreeDemo"), setting, authList);
 
-    //查询已分配的Auth的id组成的数据
+    //调用zTreeObj对象的方法 让节点默认展开。树状图默认是否展开
+    var zTreeObj = $.fn.zTree.getZTreeObj("authTreeDemo");
+    zTreeObj.expandAll(true);
 
-    //根据authIdArray把树形结构中对应的节点勾选上
+    //查询已分配的Auth的id组成的数据
+    ajaxReturn = $.ajax({
+        url: "assign/get/assigned/authId/by/roleId.json",
+        type: "post",
+        data: {
+            roleId: window.roleId
+        },
+        dataType: "json",
+        async: false
+    });
+    if (ajaxReturn.status != 200) {
+        layer.msg("请求处理出错,响应状态码是：" + ajaxReturn.status + "说明是："  + ajaxReturn.statusText);
+        return ;
+    }
+    // 已分配的权限
+    var assignedAuthIdArray = ajaxReturn.responseJSON.data;
+
+    //根据assignedAuthIdArray把树形结构中对应的节点勾选上
+    for(var i = 0;i < assignedAuthIdArray.length;i++){
+        var authId = assignedAuthIdArray[i];
+
+        var treeNode = zTreeObj.getNodeByParam("id",authId);
+
+        // true：表示节点需要勾选
+        var checked = true;
+        // false：表示节点不联动[为了避免把不该勾选的勾选上]
+        var checkTypeFlag = false;
+        zTreeObj.checkNode(treeNode, checked, checkTypeFlag);
+    }
 }

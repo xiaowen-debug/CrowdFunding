@@ -17,6 +17,8 @@ import javax.servlet.http.HttpSession;
  */
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 
+  /*
+  集成springsecurity后取消该拦截器
   @Override
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
@@ -32,4 +34,5 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     }
     return true;
   }
+  */
 }
