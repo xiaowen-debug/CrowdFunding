@@ -8,6 +8,7 @@ import com.xiaowen.crowd.service.admin.Adminservice;
 import com.xiaowen.crowd.util.CrowdUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -28,6 +28,9 @@ public class AdminHandler {
 
   @Autowired
   private Adminservice adminservice;
+
+  @Autowired
+  private BCryptPasswordEncoder bCryptPasswordEncoder;
 
   /**
    * 分页查询数据
@@ -77,8 +80,10 @@ public class AdminHandler {
 
     //明文加密
     String userPswd = admin.getUserPswd();
-    admin.setUserPswd(CrowdUtil.md5(userPswd));
+    //String userEncodePswd = CrowdUtil.md5(userPswd);
+    String userEncodePswd = bCryptPasswordEncoder.encode(userPswd);
 
+    admin.setUserPswd(userEncodePswd);
     Date date = new Date();
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     String createTime = simpleDateFormat.format(date);

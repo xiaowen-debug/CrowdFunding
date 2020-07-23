@@ -53,4 +53,7 @@
         </tx:attributes>
     </tx:advice>
 
+    <bean id="bCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+    </bean>
+
 </beans>

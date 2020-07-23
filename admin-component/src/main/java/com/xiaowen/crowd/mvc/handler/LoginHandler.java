@@ -27,7 +27,7 @@ public class LoginHandler {
    * @param session
    * @return
    */
-  @RequestMapping("admin/do/login.html")
+  @RequestMapping("security/do/login.html")
   public String doLogin(@RequestParam("userAcct") String userAcct,
                         @RequestParam("password") String password,
                         HttpSession session) {
@@ -58,7 +58,7 @@ public class LoginHandler {
    * @param session
    * @return
    */
-  @RequestMapping("admin/do/logout.html")
+  @RequestMapping("security/do/logout.html")
   public String dologout(HttpSession session) {
 
     //强制Session失效

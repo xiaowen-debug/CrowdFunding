@@ -47,4 +47,11 @@ public interface AuthMapper {
      * @param authIdList
      */
     void insertNewRelationship(@Param("roleId") Integer roleId, @Param("authIdList") List<Integer> authIdList);
+
+    /**
+     * 根据adminId查询其权限
+     * @param adminId
+     * @return
+     */
+    List<Auth> selectAssignedAuthByAdminId(@Param("adminId") Integer adminId);
 }
