@@ -16,7 +16,7 @@
         <!-- 声明属性，对 Spring 的版本进行统一管理 -->
         <xiaowen.spring.version>4.3.20.RELEASE</xiaowen.spring.version>
         <!-- 声明属性，对 SpringSecurity 的版本进行统一管理 -->
-        <xiaowen.spring.security.version>4.2.10.RELEASE</xiaowen.spring.security.version>
+        <xiaowen.spring.security.version>5.2.10.RELEASE</xiaowen.spring.security.version>
     </properties>
 
     <!-- 依赖版本管理 -->
